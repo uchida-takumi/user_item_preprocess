@@ -32,13 +32,12 @@ class TEST01(unittest.TestCase):
                 user_id, item_id, datetime, diff_days)
         
         # Assertion
-        self.assertEqual(result['past_all_cnt'],    3)
-        self.assertEqual(result['past_150day_cnt'], 3)
-        self.assertEqual(result['past_120day_cnt'], 3)
-        self.assertEqual(result['past_90day_cnt'],  2)
-        self.assertEqual(result['past_60day_cnt'],  2)
-        self.assertEqual(result['past_30day_cnt'],  1)
-        self.assertEqual(result['past_7day_cnt'],   0)
+        self.assertEqual(result[150], 3)
+        self.assertEqual(result[120], 3)
+        self.assertEqual(result[90],  2)
+        self.assertEqual(result[60],  2)
+        self.assertEqual(result[30],  1)
+        self.assertEqual(result[7],   0)
         
 
     def tearDown(self):
