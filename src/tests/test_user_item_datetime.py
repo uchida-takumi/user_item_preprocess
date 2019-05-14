@@ -28,8 +28,8 @@ class TEST01(unittest.TestCase):
         datetime = '2019-04-15'
         diff_days = [7,30,60,90,120,150]
         
-        result = self.user_item_datetime.get_past_cnt_by_user_item_datetime(
-                user_id, item_id, datetime, diff_days)
+        result = self.user_item_datetime.get_past_cnt(
+                datetime, user_id, item_id, diff_days)
         
         # Assertion
         self.assertEqual(result[150], 3)
@@ -38,7 +38,41 @@ class TEST01(unittest.TestCase):
         self.assertEqual(result[60],  2)
         self.assertEqual(result[30],  1)
         self.assertEqual(result[7],   0)
+
+    def test01_02(self):
+        user_id = 1
+        item_id = None
+        datetime = '2019-04-15'
+        diff_days = [7,30,60,90,120,150]
         
+        result = self.user_item_datetime.get_past_cnt(
+                datetime, user_id, item_id, diff_days)
+        
+        # Assertion
+        self.assertEqual(result[150], 4)
+        self.assertEqual(result[120], 4)
+        self.assertEqual(result[90],  3)
+        self.assertEqual(result[60],  2)
+        self.assertEqual(result[30],  1)
+        self.assertEqual(result[7],   0)
+        
+    def test01_03(self):
+        user_id = None
+        item_id = 1
+        datetime = '2019-04-15'
+        diff_days = [7,30,60,90,120,150]
+        
+        result = self.user_item_datetime.get_past_cnt(
+                datetime, user_id, item_id, diff_days)
+        
+        # Assertion
+        self.assertEqual(result[150], 4)
+        self.assertEqual(result[120], 4)
+        self.assertEqual(result[90],  3)
+        self.assertEqual(result[60],  2)
+        self.assertEqual(result[30],  1)
+        self.assertEqual(result[7],   0)
+
 
     def tearDown(self):
         pass
